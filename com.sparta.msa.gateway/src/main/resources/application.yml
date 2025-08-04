@@ -1,0 +1,23 @@
+server:
+  port: 19091
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        id: user-service
+
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://localhost:19090/eureka
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true
+

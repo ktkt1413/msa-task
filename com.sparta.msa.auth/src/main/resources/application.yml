@@ -1,0 +1,24 @@
+server:
+  port: 1905
+
+spring:
+  application:
+    name: auth-service
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: sparta
+  zipkin:
+    base-url: http://localhost:9411
+    enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:19090/eureka
+service:
+  jwt:
+    access-expiration: 3600000
+    secret-key: "67672d781f2c2f576795faccd2838590612f79142a86ca4513977ebe2cee7eb894f31dfb880ecc0d00a547d754fcbde7af28772837f35c1c0c487a84557fbaaf"
+
