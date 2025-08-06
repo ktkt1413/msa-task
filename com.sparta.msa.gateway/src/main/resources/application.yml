@@ -2,15 +2,32 @@ server:
   port: 19091
 
 spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-service
   cloud:
     gateway:
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/orders/**
+        - id: product-service
+          uri: lb://product-service
+          predicates:
+            - Path=/products/**
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
       discovery:
         locator:
           enabled: true
-      routes:
-        id: user-service
 
-
+service:
+  jwt:
+    secret-key: "776198fe31bf2f1853e3e18c89418346102710f4e3ffcd1d30fc83901d981639db4d82ec7434989a25069696f4e162bf29ccb6da1f995fd3944226068bb517ab"
 
 eureka:
   client:
